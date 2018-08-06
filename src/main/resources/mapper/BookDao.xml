@@ -35,4 +35,10 @@
 			book_id = #{bookId}
 		AND number > 0
 	</update>
+
+	<insert id="saveBook" parameterType="Map">
+			 INSERT INTO book (book_id, NAME, number)
+	VALUES
+	(#{bookId}, #{name}, #{number})
+	</insert>
 </mapper>

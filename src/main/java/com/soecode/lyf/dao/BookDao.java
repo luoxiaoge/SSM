@@ -1,11 +1,10 @@
 package com.soecode.lyf.dao;
 
-import java.util.Date;
-import java.util.List;
-
+import com.soecode.lyf.entity.Book;
 import org.apache.ibatis.annotations.Param;
 
-import com.soecode.lyf.entity.Book;
+import java.util.List;
+import java.util.Map;
 
 public interface BookDao {
 
@@ -33,5 +32,7 @@ public interface BookDao {
 	 * @return 如果影响行数等于>1，表示更新的记录行数
 	 */
 	int reduceNumber(long bookId);
+
+	int saveBook(Map<String,Object> map);
 
 }
