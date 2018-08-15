@@ -29,6 +29,7 @@ public class BookController {
 	private String list(Model model) {
 		List<Book> list = bookService.getList();
 		model.addAttribute("list", list);
+		logger.debug("this a debug message");
 		// list.jsp + model = ModelAndView
 		return "list";// WEB-INF/jsp/"list".jsp
 	}

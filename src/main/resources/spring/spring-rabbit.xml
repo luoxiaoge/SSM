@@ -6,31 +6,33 @@ http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
 http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
+<!--
     <context:property-placeholder location="service.properties" />
-     <!--定义rabbit连接工厂-->
+     &lt;!&ndash;定义rabbit连接工厂&ndash;&gt;
      <rabbit:connection-factory  id="connectionFactory"
        addresses="#{amqp.rabbit.game.address}" username="#{amqp.rabbit.game.username}" password="#{amqp.rabbit.game.pwd}" virtual-host="#{amqp.rabbit.game.vhost}"
      ></rabbit:connection-factory>
 
-    <!--定义rabbit模版 生产者-->
+    &lt;!&ndash;定义rabbit模版 生产者&ndash;&gt;
     <rabbit:template connection-factory="connectionFactory"  exchange="fanoutExchange" routing-key=""/>
 
-    <!--定义消费者-->
+    &lt;!&ndash;定义消费者&ndash;&gt;
     <bean id="userCosumer" class="com.soecode.lyf.rabbit.UserCosumer"/>
 
 
-    <!--定义队列参数-->
+    &lt;!&ndash;定义队列参数&ndash;&gt;
     <rabbit:queue-arguments id="queueArgument">
         <entry key="x-ha-policy"  value="all" value-type="java.lang.String"/>
     </rabbit:queue-arguments>
 
-    <!--定义队列-->
+    &lt;!&ndash;定义队列&ndash;&gt;
     <rabbit:queue id="user_exchange" durable="true" auto-delete="false" exclusive="false" name="user_exchange"
                   queue-arguments="queueArgument"/>
-   <!--定义监听手动确认-->
+   &lt;!&ndash;定义监听手动确认&ndash;&gt;
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="${amqp.rabbit.game.prefetch}">
         <rabbit:listener queues="user_exchange" ref="userCosumer" />
     </rabbit:listener-container>
+-->
 
 
 

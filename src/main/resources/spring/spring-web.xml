@@ -22,9 +22,21 @@
 		(2)允许使用"/"做整体映射
 	 -->
 	 <mvc:default-servlet-handler/>
-	 
+
+	<!--利用浏览器 accet-language 做的国际化-->
+	<bean id="messageSource"  class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!--message 可以指定文件地址-->
+		<property name="basename" value="message"/>
+		<property name="cacheSeconds" value="0" />
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+
+	<!--国际化拦截器-->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+	</mvc:interceptors>
 	 <!-- 3.配置jsp 显示ViewResolver -->
-	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 	 	<property name="prefix" value="/WEB-INF/jsp/" />
 	 	<property name="suffix" value=".jsp" />
@@ -32,4 +44,6 @@
 	 
 	 <!-- 4.扫描web相关的bean -->
 	 <context:component-scan base-package="com.soecode.lyf.web" />
+
+
 </beans>
