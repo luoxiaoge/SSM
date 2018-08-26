@@ -8,7 +8,7 @@
 </head>
     <%--使用message标签来输出国际化信息--%>
 <h3><spring:message code="title"/></h3>
-<form:form modelAttribute="user" method="post" action="login" >
+<form:form modelAttribute="user" method="post" action="/login" >
     <table>
         <tr>
              <td><spring:message code="loginame"/></td>

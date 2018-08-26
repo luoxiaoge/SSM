@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.support.RequestContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Function: TODO
@@ -33,7 +34,7 @@ public class UserController {
      }
 
      @RequestMapping(value = "/login",method = RequestMethod.POST)
-     public String login(@ModelAttribute @Validated User user, Model model, HttpServletRequest request){
+     public String login(@ModelAttribute @Validated User user, Model model, HttpServletRequest request, HttpSession session){
          // 如果登陆名是fkit, 密码是123456，则验证通过
          if (user.getLoginname() != null && "fkit".equals(user.getLoginname()) && user.getPassword() != null &&
                  "123456".equals(user.getPassword())){
@@ -42,6 +43,9 @@ public class UserController {
              String userName = requestContext.getMessage("username");
              user.setUsername(userName);
              model.addAttribute("user",user);
+             session.setAttribute("user",user);
+             System.out.println(request.getSession().getAttribute("user"));
+             //request.getSession().setAttribute("user",user);
              return "success";
          }
          return "error";

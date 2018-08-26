@@ -28,6 +28,8 @@ public class User {
 
     private String password;
 
+    private String username;
+
     public String getUsername() {
         return username;
     }
@@ -36,7 +38,12 @@ public class User {
         this.username = username;
     }
 
-    private String username;
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "loginname='" + loginname + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

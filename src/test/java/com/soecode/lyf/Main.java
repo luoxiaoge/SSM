@@ -12,11 +12,9 @@ public class Main {
 
     @Test
     public void Test()  {
-        //ArrayList
-      /*  ImplemetnsClass a = new ImplemetnsClass();
-            a.getMeassage();*/
 
-        System.out.println(210>>1);
+
+        System.out.println();
     }
 
     /**

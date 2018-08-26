@@ -30,7 +30,7 @@
 	</appender>-->
 
 	<!--
-	1. value=“logs” – 表示保存到程序运行目录，在tomcat中为bin目录 
+	1. value=“logs” – 表示保存到程序运行目录，在tomcat中为bin目录
 	2. value=“/logs” – 表示保存到系统目录
 	3. value=“../logs” – 表示保存到程序运行目录的父目录
 	-->
@@ -41,12 +41,13 @@
 		</encoder>
 	</appender>
 
-
+  <!--  <logger name="org.springframework" level="debug"/>
 	<logger name="com.soecode.lyf" level="info"/>
 	<logger name="com.soecode.lyf.dao" level="debug"/>
-	<logger name="com.soecode.lyf.web" level="debug"/>
-	<root level="debug">
+	<logger name="com.soecode.lyf.web" level="debug"/>-->
+	<root level="in">
+		<!--将日志记录器添加到日志-->
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
+		<!--<appender-ref ref="FILE" />-->
 	</root>
 </configuration>

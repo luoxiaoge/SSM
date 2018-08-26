@@ -7,7 +7,6 @@
     <title>test Jsp</title>
 </head>
 <body>
-    <c:out value="${list}" ></c:out>
      <table id="booktable" border="1"  style="border-collapse: collapse">
          <tr align="center">
              <td>ID</td>
