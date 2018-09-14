@@ -412,7 +412,6 @@ public class LeetCode {
                     rowColumnMap.put(board[i][j], j);
                 }
             }
-
         }
 
         rowColumnMap.clear();
@@ -434,28 +433,18 @@ public class LeetCode {
     }
 
 
+
+
+
     public static void main(String[] args) {
-       //int[] a = new int[]{8,9};
-        int[] nums1 = {2, 7, 11, 15}, nums2 = {0,0,1};
+        int n =5;
+        int n1 =1;
 
-        char[][] bb = new char[][]{
+        for (int i = 1; i <=n ; i++) {
+             n1 *= i;
+        }
 
-                {'.','1','.','5','2','.','.','.','.'},
-                {'.','.','.','.','.','6','4','3','.'},
-                {'.','.','.','.','.','.','.','.','.'},
-                {'5','.','.','.','.','.','9','.','.'},
-                {'.','.','.','.','.','.','.','5','.'},
-                {'.','.','.','5','.','.','.','.','.'},
-                {'9','.','.','.','.','3','.','.','.'},
-                {'.','.','6','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.'}
-        };
-
-        System.out.println(isValidSudoku(bb));;
-
-       /* quickSort(a);
-        HashMap<String,Object> b = new HashMap<String, Object>();
-        */
+        System.out.println(n1);
 
 
     }

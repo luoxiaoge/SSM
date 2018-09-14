@@ -14,7 +14,7 @@ public class Main {
     public void Test()  {
 
 
-        System.out.println();
+        System.out.println( 15 ^ (15 >>> 16));
     }
 
     /**
