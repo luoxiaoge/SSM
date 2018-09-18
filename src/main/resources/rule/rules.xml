@@ -1,0 +1,21 @@
+<rules>
+    <rule>
+
+        <!--
+         对用户名username调用自定义路由规则，如果返回的结果为1，则进入分片数据库1，以此类推1,2,3
+           表达式如果不使用自定义路由规则函数,而是直接使用   taobaoId%2==0这种的话就不用在文件
+           中配置<property name="functionsMap">中了
+            -->
+    <namespace>User</namespace>
+    <shardingExpression>hash.user(username) = 1</shardingExpression>
+    <shards>partition1</shards>
+</rule>
+
+<rule>
+    <namespace>User</namespace>
+    <shardingExpression>hash.user(username) = 2</shardingExpression>
+    <shards>partition2</shards>
+</rule>
+
+
+</rules>
