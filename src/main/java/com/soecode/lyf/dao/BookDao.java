@@ -35,4 +35,6 @@ public interface BookDao {
 
 	int saveBook(Map<String,Object> map);
 
+	void batchInsert(Map<String,Object> map);
+
 }

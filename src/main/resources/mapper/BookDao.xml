@@ -41,4 +41,15 @@
 	VALUES
 	(#{bookId}, #{name}, #{number})
 	</insert>
+
+
+	<insert id="batchInsert" parameterType="Map">
+		INSERT INTO book(`name`,`number`) VALUES
+		<foreach collection="specValue" item ="temp" separator=",">
+			(
+			#{specId},
+			#{temp}
+			)
+		</foreach>
+	</insert>
 </mapper>

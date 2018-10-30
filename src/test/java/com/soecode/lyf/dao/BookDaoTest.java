@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,20 @@ public class BookDaoTest extends BaseTest {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void testBatchInsert() throws  Exception{
+		Map<String,Object> map  = new HashMap<String, Object>();
+		map.put("specId","my heart will go on");
+		List<Integer> list  = new ArrayList<Integer>();
+		list.add(10);
+		list.add(20);
+		list.add(30);
+
+		map.put("specValue",list);
+
+		bookDao.batchInsert(map);
 
 	}
 
