@@ -1,5 +1,6 @@
 package com.soecode.lyf.dao;
 
+import com.alibaba.fastjson.JSON;
 import com.soecode.lyf.BaseTest;
 import com.soecode.lyf.entity.Book;
 import org.junit.Test;
@@ -63,19 +64,67 @@ public class BookDaoTest extends BaseTest {
 		}
 	}
 
+	/**
+	 *  批量插入
+	 * @throws Exception
+	 */
 	@Test
 	public void testBatchInsert() throws  Exception{
-		Map<String,Object> map  = new HashMap<String, Object>();
-		map.put("specId","my heart will go on");
-		List<Integer> list  = new ArrayList<Integer>();
-		list.add(10);
-		list.add(20);
-		list.add(30);
+		//Map<String,Object> map  = new HashMap<String, Object>();
+		//map.put("specId","my heart will go on");
+		List<Map<String,Object>> list  = new ArrayList<Map<String,Object>>();
+		Map<String,Object> map1  = new HashMap<String, Object>();
+		map1.put("specId","fffff");
+		map1.put("specValue",3);
+		Map<String,Object> map2  = new HashMap<String, Object>();
+		map2.put("specId","bbb");
+		map2.put("specValue",4);
+		Map<String,Object> map3  = new HashMap<String, Object>();
+		map3.put("specId","dddd");
+		map3.put("specValue",5);
 
-		map.put("specValue",list);
+		list.add(map1);
+		list.add( map2);
+		list.add(map3 );
 
-		bookDao.batchInsert(map);
+		//map.put("specValue",list);
+		// 批量插入 list
 
+		bookDao.batchInsert(list);
+		System.out.println(JSON.toJSON(list));
 	}
+
+
+	/**
+	 *  批量插入數組
+	 */
+	@Test
+	public void  testBatchInsertArrays(){
+		Integer[]  arrays = new Integer[]{1,2,3};
+		bookDao.batchInsertArray(arrays);
+	}
+
+	/**
+	 *  批量插入Map
+	 */
+	public void  testBatchInsertMap(){
+		Map<String,Object>  map  = new HashMap<String, Object>();
+		map.put("1",1);
+		map.put("2",2);
+		bookDao.batchInsertMap(map);
+	}
+
+	/**
+	 *  批量更新书籍 测试未通过 sql有问题
+	 */
+	@Test
+	public void  testBatchUpdateBook(){
+		 Map<String,Object>  map = new HashMap<String, Object>();
+		 map.put("aaa",10);
+		 map.put("zhang",200);
+		 bookDao.batchUpdateBook(map);
+	}
+
+
 
 }

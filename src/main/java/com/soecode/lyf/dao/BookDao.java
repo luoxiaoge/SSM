@@ -35,6 +35,16 @@ public interface BookDao {
 
 	int saveBook(Map<String,Object> map);
 
-	void batchInsert(Map<String,Object> map);
+	void batchInsert(List list);
+
+	void batchInsertArray(Integer[] array);
+
+	void batchInsertMap(Map<String,Object>  map);
+
+	/**
+	 *
+	 * @param Book 更新数据
+	 */
+	void batchUpdateBook(@Param("Book") Map<String,Object>  Book);
 
 }

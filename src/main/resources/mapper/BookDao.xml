@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.soecode.lyf.dao.BookDao">
 	<!-- 目的：为dao接口方法提供sql语句配置 -->
-	<select id="queryById" resultType="Book" parameterType="long">
+	<select id="queryById" resultType="com.soecode.lyf.entity.Book" parameterType="long">
 		<!-- 具体的sql -->
 		SELECT
 			book_id,
@@ -16,7 +16,7 @@
 			book_id = #{bookId}
 	</select>
 	
-	<select id="queryAll" resultType="Book">
+	<select id="queryAll" resultType="com.soecode.lyf.entity.Book">
 		SELECT
 			book_id,
 			name,
@@ -43,13 +43,49 @@
 	</insert>
 
 
-	<insert id="batchInsert" parameterType="Map">
+	<insert id="batchInsert" parameterType="Map"  useGeneratedKeys="true" keyProperty="book_id">
 		INSERT INTO book(`name`,`number`) VALUES
-		<foreach collection="specValue" item ="temp" separator=",">
+		<foreach collection="list" item ="temp" separator=",">
 			(
-			#{specId},
-			#{temp}
+			#{temp.specId},
+			#{temp.specValue}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		number = values(number)
+
+	</insert>
+
+	<insert id="batchInsertArray"  >
+		INSERT INTO book(`name`,`number`) VALUES
+		<foreach collection="array" item ="temp" index="index" separator=",">
+			(
+			"aaa",
+			#{index}
 			)
 		</foreach>
 	</insert>
+
+
+	<insert id="batchInsertMap" >
+		INSERT INTO book(`name`,`number`) VALUES
+		<foreach collection="Array" item ="temp" separator=",">
+			(
+			 "aaa",
+			 #{temp}
+			)
+		</foreach>
+	</insert>
+
+	<update id="batchUpdateBook" parameterType="Map">
+		<foreach item="value" index="key" collection="Book.entrySet()" separator=";">
+            UPDATE book SET
+            number= ${value}
+            WHERE name = #{key}
+		</foreach>
+	</update>
+
+
+
+
 </mapper>
